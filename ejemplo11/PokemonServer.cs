@@ -20,7 +20,7 @@ namespace ejemplo11
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; Integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Numero, NOmbre, Descripcion from POKEMONS";
+                comando.CommandText = "select Numero, Nombre, Descripcion, UrlImagen from POKEMONS";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -32,7 +32,9 @@ namespace ejemplo11
                     aux.Descripcion = (string)lector["Descripcion"];
                     aux.Numero = lector.GetInt32(0);
                     aux.Nombre = (string)lector["Nombre"];
-                    
+                    aux.UrlImagen = (string)lector["UrlImagen"];
+
+
 
                     lista.Add(aux);
                 }
