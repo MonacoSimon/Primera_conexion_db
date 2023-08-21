@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using directorio;
+using server;
 
 namespace ejemplo11
 {
@@ -23,6 +25,7 @@ namespace ejemplo11
             PokemonServer server = new PokemonServer();
             listapokemon = server.listas();
             dgvPokemon.DataSource = listapokemon;
+            dgvPokemon.Columns["URLImagen"].Visible = false;
             pbImagen.Load(listapokemon[0].UrlImagen);
             
         }

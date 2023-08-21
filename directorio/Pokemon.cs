@@ -3,10 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using directorio;
 
-namespace ejemplo11
+namespace directorio
 {
-    class Pokemon
+    public class Pokemon
     {
         public int Numero { get; set; }
 
@@ -15,5 +16,9 @@ namespace ejemplo11
         public string Descripcion { get; set; }
 
         public string UrlImagen { get; set; }
+
+        public Elemento tipo { get; set; }
+
+        public Elemento Debilidad { get; set; }
     }
 }

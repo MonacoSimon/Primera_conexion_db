@@ -4,10 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using directorio;
 
-namespace ejemplo11
+
+namespace server
+
 {
-    class PokemonServer
+    public class PokemonServer
     {
         public List<Pokemon> listas()
         {
@@ -20,7 +23,7 @@ namespace ejemplo11
             {
                 conexion.ConnectionString = "server=.\\SQLEXPRESS; database=POKEDEX_DB; Integrated security = true";
                 comando.CommandType = System.Data.CommandType.Text;
-                comando.CommandText = "select Numero, Nombre, Descripcion, UrlImagen from POKEMONS";
+                comando.CommandText = "select Numero, Nombre, p.Descripcion, UrlImagen, e.Descripcion as tipo, d.Descripcion as debilidad from POKEMONS p, ELEMENTOS e, ELEMENTOS d where e.Id = p.IdTipo and d.Id = p.IdDebilidad";
                 comando.Connection = conexion;
 
                 conexion.Open();
@@ -33,6 +36,10 @@ namespace ejemplo11
                     aux.Numero = lector.GetInt32(0);
                     aux.Nombre = (string)lector["Nombre"];
                     aux.UrlImagen = (string)lector["UrlImagen"];
+                    aux.tipo = new Elemento();
+                    aux.tipo.Descripcion = (string)lector["tipo"];
+                    aux.Debilidad = new Elemento();
+                    aux.Debilidad.Descripcion = (string)lector["debilidad"];
 
 
 
